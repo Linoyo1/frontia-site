@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>תבנית 05 · נועז · ברברשופ | Frontia</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FFFDF7; --ink:#0A0A0A; --ink2:#3B3B3B; --muted:#6B6B6B;
+  --acc:#FF4A1C; --acc-2:#FFD400;
+  --f:'Heebo',-apple-system,'Segoe UI',Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--f);background:var(--paper);color:var(--ink);font-size:17.5px;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.w{max-width:1060px;margin:0 auto;padding-inline:22px}
+:focus-visible{outline:4px solid var(--acc);outline-offset:3px}
+.skip{position:absolute;inset-inline-start:-9999px;top:0;background:var(--ink);color:#fff;padding:12px 20px;z-index:99}
+.skip:focus{inset-inline-start:16px;top:12px}
+.num{font-variant-numeric:tabular-nums;unicode-bidi:isolate}
+
+header{border-bottom:3px solid var(--ink);background:var(--paper);position:sticky;top:0;z-index:20}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:13px 0}
+.lg{font-size:22px;font-weight:900;letter-spacing:-.6px}
+.lg small{display:block;font-size:12px;font-weight:500;color:var(--muted);letter-spacing:.04em}
+.tel{font-weight:700;border:3px solid var(--ink);padding:6px 14px;background:var(--acc-2)}
+
+.hero{padding:54px 0 46px;border-bottom:3px solid var(--ink)}
+h1{font-size:clamp(38px,7.4vw,86px);line-height:1.06;font-weight:900;letter-spacing:-2.6px;max-width:13ch}
+h1 mark{display:inline-block;background:var(--acc-2);color:var(--ink);padding:.02em .14em;margin-top:.12em;line-height:1.06}
+.lede{margin-top:24px;font-size:20px;font-weight:400;color:var(--ink2);max-width:46ch}
+.cta{margin-top:32px;display:flex;gap:16px;flex-wrap:wrap}
+.b{display:inline-block;padding:17px 34px;font-size:18px;font-weight:700;border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink)}
+.b:active{transform:translate(3px,3px);box-shadow:3px 3px 0 var(--ink)}
+.b1{background:var(--acc);color:#fff}
+.b2{background:var(--paper);color:var(--ink)}
+
+.strip{background:var(--ink);color:var(--paper);padding:14px 0;border-bottom:3px solid var(--ink)}
+.strip .w{display:flex;flex-wrap:wrap;gap:28px;justify-content:center;font-size:16px;font-weight:500}
+.strip b{color:var(--acc-2)}
+
+.blocks{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:3px solid var(--ink)}
+.blk{padding:32px 26px;border-inline-start:3px solid var(--ink)}
+.blk:first-child{border-inline-start:0}
+.blk .p{font-size:34px;font-weight:900;line-height:1;letter-spacing:-1.4px;color:var(--acc)}
+.blk b{display:block;margin-top:12px;font-size:21px;font-weight:800;letter-spacing:-.5px}
+.blk p{margin-top:6px;color:var(--ink2);font-size:16.5px}
+
+section{padding:54px 0;border-bottom:3px solid var(--ink)}
+h2{font-size:clamp(28px,4.6vw,46px);font-weight:900;letter-spacing:-1.4px;line-height:1.06;max-width:16ch}
+.sub{margin-top:12px;color:var(--muted);font-size:18px;max-width:52ch}
+
+.bars{margin-top:32px;display:grid;border:3px solid var(--ink)}
+.bar{display:grid;grid-template-columns:76px 1fr auto;border-bottom:3px solid var(--ink)}
+.bar:last-child{border-bottom:0}
+.bar .k{background:var(--acc-2);border-inline-end:3px solid var(--ink);display:grid;place-items:center;font-size:24px;font-weight:900}
+.bar .v{padding:18px 24px}
+.bar b{display:block;font-size:20px;font-weight:800;letter-spacing:-.4px}
+.bar span{color:var(--ink2);font-size:16.5px}
+.bar .pr{padding:18px 24px;display:grid;place-items:center;font-size:20px;font-weight:900;border-inline-start:3px solid var(--ink);white-space:nowrap}
+
+.hours{margin-top:32px;border:3px solid var(--ink);display:grid;grid-template-columns:repeat(3,1fr)}
+.hours div{padding:20px;border-inline-start:3px solid var(--ink)}
+.hours div:first-child{border-inline-start:0}
+.hours b{display:block;font-size:17px;font-weight:800}
+.hours span{color:var(--ink2);font-size:16px}
+
+.ph{margin-top:30px;border:3px dashed var(--ink);padding:22px 24px;background:#fff;font-size:16.5px;color:var(--ink2)}
+.ph b{color:var(--ink);font-weight:800}
+
+.formsec{background:var(--ink);color:var(--paper)}
+.formsec h2{color:var(--paper)}
+.formsec .sub{color:rgba(255,253,247,.66)}
+form{margin-top:32px;max-width:540px;background:var(--paper);color:var(--ink);border:3px solid var(--acc-2);padding:28px;box-shadow:8px 8px 0 var(--acc)}
+label{display:block;font-size:15px;font-weight:700;margin:16px 0 6px}
+input[type=text],input[type=tel],select{width:100%;padding:13px 15px;border:3px solid var(--ink);background:#fff;font-family:inherit;font-size:16.5px;color:var(--ink)}
+input::placeholder{color:#999}
+input:focus,select:focus{outline:0;border-color:var(--acc)}
+.chk{display:flex;gap:10px;align-items:flex-start;margin-top:18px;font-size:14.5px;color:var(--ink2);line-height:1.55}
+.chk input{margin-top:5px;width:18px;height:18px;flex:none}
+.chk label{margin:0;font-weight:400;font-size:14.5px}
+button{width:100%;margin-top:20px;padding:16px;background:var(--acc);color:#fff;border:3px solid var(--ink);box-shadow:5px 5px 0 var(--ink);font-family:inherit;font-size:18px;font-weight:800;cursor:pointer}
+button:active{transform:translate(2px,2px);box-shadow:3px 3px 0 var(--ink)}
+.fine{font-size:13px;color:var(--muted);margin-top:16px;line-height:1.6}
+.fine a{color:var(--ink);text-decoration:underline}
+
+.qa{border-top:3px solid var(--ink);padding:20px 0}
+.qa b{display:block;font-size:19px;font-weight:800}
+.qa p{margin-top:5px;color:var(--ink2);font-size:16.5px}
+
+footer{padding:24px 0;font-size:14.5px;color:var(--muted)}
+footer .w{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
+footer a{text-decoration:underline}
+.legal{margin-top:12px;font-size:13px;line-height:1.6;max-width:80ch}
+
+.sticky{display:none}
+@media(max-width:820px){
+  .blocks,.hours{grid-template-columns:1fr}
+  .blk,.hours div{border-inline-start:0;border-top:3px solid var(--ink)}
+  .blk:first-child,.hours div:first-child{border-top:0}
+  .bar{grid-template-columns:60px 1fr}
+  .bar .pr{grid-column:1 / -1;border-inline-start:0;border-top:3px solid var(--ink);justify-content:flex-start;padding-block:12px}
+  .sticky{display:block;position:fixed;inset-inline:0;bottom:0;background:var(--acc);border-top:3px solid var(--ink);padding:12px 16px calc(12px + env(safe-area-inset-bottom));z-index:40}
+  .sticky a{display:block;text-align:center;color:#fff;font-weight:800;font-size:18px}
+  body{padding-bottom:80px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<a class="skip" href="#form">דלג לטופס</a>
+
+<header>
+  <div class="w nav">
+    <div class="lg">שם המספרה<small>ברברשופ · תספורות וזקן</small></div>
+    <a class="tel num" href="tel:0500000000" dir="ltr">050-000-0000</a>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <div class="w">
+    <h1>נכנסת בלי תור.<br><mark>יצאת עם תספורת.</mark></h1>
+    <p class="lede">שולחים הודעה ומקבלים את השעות הפנויות של היום. אפשר גם פשוט להגיע, אבל מי שקובע מראש לא מחכה על הספסל.</p>
+    <div class="cta">
+      <a class="b b1" href="#form">לתפוס תור</a>
+      <a class="b b2 num" href="tel:0500000000" dir="ltr">050-000-0000</a>
+    </div>
+  </div>
+</div>
+
+<div class="strip">
+  <div class="w">
+    <span><b>פתוח 6 ימים</b></span>
+    <span><b>בלי תור</b> אפשר גם להגיע</span>
+    <span><b>מזומן, אשראי, ביט</b></span>
+    <span><b>חניה ברחוב</b></span>
+  </div>
+</div>
+
+<div class="blocks">
+  <div class="blk"><div class="p">15 דק׳</div><b>תספורת מהירה</b><p>מי שממהר ורוצה להיכנס ולצאת. בלי פשרות על התוצאה.</p></div>
+  <div class="blk"><div class="p">40 דק׳</div><b>תספורת וזקן</b><p>עם מגבת חמה, שמן וסידור מלא. הפינוק של פעם בחודש.</p></div>
+  <div class="blk"><div class="p">10 דק׳</div><b>סידור ביניים</b><p>רק לרענן קווים בין תספורת לתספורת. בלי לקבוע מראש.</p></div>
+</div>
+
+<section class="w">
+  <h2>המחירון. בלי כוכביות.</h2>
+  <p class="sub">המחיר שכתוב הוא המחיר שמשלמים. אין תוספת על שיער ארוך ואין תוספת על שטיפה.</p>
+  <div class="bars">
+    <div class="bar"><div class="k">1</div><div class="v"><b>תספורת גבר</b><span>כולל שטיפה וסידור</span></div><div class="pr num" dir="ltr">80 ₪</div></div>
+    <div class="bar"><div class="k">2</div><div class="v"><b>תספורת וזקן</b><span>מגבת חמה, שמן וסידור מלא</span></div><div class="pr num" dir="ltr">120 ₪</div></div>
+    <div class="bar"><div class="k">3</div><div class="v"><b>זקן בלבד</b><span>עיצוב, גילוח קווים ושמן</span></div><div class="pr num" dir="ltr">50 ₪</div></div>
+    <div class="bar"><div class="k">4</div><div class="v"><b>תספורת ילדים</b><span>עד גיל 12</span></div><div class="pr num" dir="ltr">60 ₪</div></div>
+    <div class="bar"><div class="k">5</div><div class="v"><b>סידור ביניים</b><span>לחוזרים, תוך שבועיים מהתספורת</span></div><div class="pr num" dir="ltr">30 ₪</div></div>
+  </div>
+
+  <div class="hours">
+    <div><b>ראשון עד חמישי</b><span class="num" dir="ltr">09:00 - 20:00</span></div>
+    <div><b>שישי</b><span class="num" dir="ltr">08:00 - 15:00</span></div>
+    <div><b>שבת</b><span>סגור</span></div>
+  </div>
+
+  <div class="ph"><b>מקום שמור לתמונות ולביקורות אמיתיות.</b> כאן ייכנסו תמונות של עבודות שבוצעו במקום, וביקורות גוגל אמיתיות. אין להשתמש בתמונות מהאינטרנט או במאגרי תמונות ולהציג אותן כעבודות של המספרה: זו הטעיה לפי חוק הגנת הצרכן וגם הפרת זכויות יוצרים.</div>
+</section>
+
+<section class="formsec" id="form">
+  <div class="w">
+    <h2>תופסים תור בהודעה</h2>
+    <p class="sub">שם וטלפון, ואנחנו שולחים את השעות הפנויות של היום.</p>
+    <form onsubmit="event.preventDefault();alert('זו תבנית להמחשה. יש לחבר את הטופס למערכת לפני העלייה לאוויר.');">
+      <label for="nm">שם</label>
+      <input id="nm" type="text" autocomplete="name" required>
+      <label for="tl">טלפון</label>
+      <input id="tl" type="tel" autocomplete="tel" inputmode="tel" required dir="ltr">
+      <label for="sv">מה עושים</label>
+      <select id="sv">
+        <option>תספורת גבר</option>
+        <option>תספורת וזקן</option>
+        <option>זקן בלבד</option>
+        <option>תספורת ילדים</option>
+        <option>סידור ביניים</option>
+      </select>
+      <div class="chk">
+        <input id="mk" type="checkbox">
+        <label for="mk">אני מאשר קבלת עדכונים ומבצעים מהמספרה. אפשר לבטל בכל עת.</label>
+      </div>
+      <button type="submit">שלחו לי שעות פנויות</button>
+      <p class="fine">שליחת הטופס מהווה הסכמה ל<a href="#">מדיניות הפרטיות</a> ול<a href="#">תנאי השימוש</a>. הפרטים משמשים ליצירת קשר בנוגע לפנייה בלבד ואינם מועברים לגורם שלישי.</p>
+    </form>
+  </div>
+</section>
+
+<section class="w" style="border-bottom:0">
+  <h2>שאלות נפוצות</h2>
+  <div class="qa"><b>אפשר להגיע בלי לקבוע?</b><p>אפשר. פשוט תדעו שבשעות העומס, בעיקר בין חמש לשמונה בערב וביום שישי בבוקר, יש המתנה. מי שקובע מראש נכנס בשעה שסוכמה.</p></div>
+  <div class="qa"><b>מה קורה אם אני מאחר?</b><p>עד עשר דקות שומרים לכם את התור. מעבר לזה תלוי בעומס, ולפעמים נצטרך להזיז אתכם לתור הבא הפנוי.</p></div>
+  <div class="qa"><b>אתם עובדים עם ילדים?</b><p>כן, מגיל שנתיים. יש כיסא מוגבה וסבלנות. שווה לקבוע לשעות הבוקר, כשהמקום שקט יותר.</p></div>
+  <div class="qa"><b>איך מבטלים תור?</b><p>מקבלים תזכורת יום לפני, ואפשר לבטל או להזיז בלחיצה אחת בהודעה. ביטול עד שעתיים לפני הוא בסדר גמור.</p></div>
+</section>
+</main>
+
+<footer>
+  <div class="w">
+    <div>© שם המספרה · כתובת · <span class="num" dir="ltr">050-000-0000</span></div>
+    <div><a href="#">הצהרת נגישות</a> · <a href="#">מדיניות פרטיות</a> · <a href="#">תנאי שימוש</a></div>
+  </div>
+  <div class="w"><p class="legal">המחירים המוצגים תקפים למועד פרסום הדף וניתנים לשינוי. שעות הפעילות עשויות להשתנות בערבי חג ובחגים.</p></div>
+</footer>
+
+<div class="sticky"><a href="#form">לתפוס תור עכשיו</a></div>
+</body>
+</html>

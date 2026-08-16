@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>תבנית 06 · כרטיס רך · סטודיו ציפורניים וריסים | Frontia</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F1EEFA; --card:#FFFFFF;
+  --ink:#231F35; --ink2:#5B5474; --muted:#8B84A3;
+  --line:#EBE7F6;
+  --acc:#6E4FE0; --acc-soft:#F0EBFF; --mint:#E9F8F1; --mint-d:#1E9A6B;
+  --r:22px;
+  --f:'Heebo',-apple-system,'Segoe UI',Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--f);color:var(--ink);font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased;
+  background:
+    radial-gradient(600px 400px at 15% -5%,#E4DBFF,transparent 65%),
+    radial-gradient(500px 380px at 95% 8%,#DCF3EA,transparent 62%),
+    var(--bg);
+  background-attachment:fixed;
+  padding:26px 16px 44px;
+}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--acc);outline-offset:3px;border-radius:10px}
+.skip{position:absolute;inset-inline-start:-9999px;top:0;background:var(--ink);color:#fff;padding:12px 20px;z-index:99}
+.skip:focus{inset-inline-start:16px;top:12px}
+.num{font-variant-numeric:tabular-nums;unicode-bidi:isolate}
+
+.shell{max-width:560px;margin:0 auto;display:grid;gap:18px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:26px;box-shadow:0 1px 2px rgba(35,31,53,.04),0 14px 34px rgba(35,31,53,.07)}
+
+.top{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px 22px}
+.lg{font-size:19px;font-weight:700;letter-spacing:-.3px}
+.lg small{display:block;font-size:12px;font-weight:300;color:var(--muted)}
+.chip{display:inline-flex;align-items:center;gap:8px;background:var(--mint);color:var(--mint-d);padding:6px 13px;border-radius:100px;font-size:14px;font-weight:500}
+.chip i{width:7px;height:7px;border-radius:50%;background:var(--mint-d);display:inline-block}
+
+.hero{text-align:center;padding:34px 26px 30px}
+h1{font-size:clamp(29px,7vw,38px);line-height:1.2;font-weight:700;letter-spacing:-1px}
+h1 em{font-style:normal;color:var(--acc)}
+.lede{margin-top:14px;font-size:17.5px;color:var(--ink2);font-weight:300}
+.cta{margin-top:24px;display:grid;gap:10px}
+.b{display:block;text-align:center;padding:15px;border-radius:100px;font-size:17px;font-weight:500}
+.b1{background:var(--acc);color:#fff}
+.b1:hover{background:#5B3FCC}
+.b2{background:var(--acc-soft);color:var(--acc)}
+
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 10px;text-align:center;box-shadow:0 8px 20px rgba(35,31,53,.05)}
+.stat b{display:block;font-size:19px;font-weight:700}
+.stat span{display:block;font-size:12.5px;color:var(--muted);margin-top:2px}
+
+h2{font-size:22px;font-weight:700;letter-spacing:-.5px}
+.sub{margin-top:6px;color:var(--muted);font-size:16px;font-weight:300}
+
+.menu{margin-top:18px;display:grid}
+.item{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:14px 0;border-bottom:1px solid var(--line)}
+.item:last-child{border-bottom:0}
+.item b{font-size:17px;font-weight:500}
+.item span{display:block;color:var(--muted);font-size:15.5px;font-weight:300;margin-top:1px}
+.item .pr{font-size:17px;font-weight:600;color:var(--acc);white-space:nowrap}
+
+.rows{margin-top:18px;display:grid;gap:12px}
+.row{display:grid;grid-template-columns:38px 1fr;gap:13px;align-items:start}
+.row .ic{width:36px;height:36px;border-radius:12px;background:var(--acc-soft);display:grid;place-items:center;color:var(--acc);font-weight:700;font-size:15px}
+.row b{display:block;font-size:17px;font-weight:500}
+.row p{color:var(--ink2);font-size:16px;font-weight:300;margin-top:1px}
+
+label{display:block;font-size:15px;font-weight:500;margin:16px 0 6px}
+input[type=text],input[type=tel],select{width:100%;padding:14px 16px;border:1.5px solid var(--line);border-radius:14px;font-family:inherit;font-size:16.5px;background:#FBFAFF;color:var(--ink)}
+input::placeholder{color:#ADA6C2}
+input:focus,select:focus{background:#fff;border-color:var(--acc)}
+.chk{display:flex;gap:10px;align-items:flex-start;margin-top:16px;font-size:14.5px;color:var(--ink2);font-weight:300;line-height:1.55}
+.chk input{margin-top:5px;width:17px;height:17px;flex:none}
+.chk label{margin:0;font-weight:300;font-size:14.5px}
+button{width:100%;margin-top:18px;padding:15px;background:var(--acc);color:#fff;border:0;border-radius:100px;font-family:inherit;font-size:17px;font-weight:500;cursor:pointer}
+button:hover{background:#5B3FCC}
+.fine{font-size:12.5px;color:var(--muted);font-weight:300;margin-top:14px;line-height:1.6}
+.fine a{color:var(--acc);text-decoration:underline}
+
+.ph{border:1px dashed #CFC6EE;background:#FAF8FF;border-radius:16px;padding:18px 20px;color:var(--ink2);font-size:15.5px;font-weight:300}
+.ph b{color:var(--ink);font-weight:500}
+
+details{border-top:1px solid var(--line)}
+details:first-of-type{border-top:0}
+summary{cursor:pointer;list-style:none;padding:15px 0;font-size:16.5px;font-weight:500;display:flex;justify-content:space-between;gap:12px;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--acc);font-size:21px;line-height:1}
+details[open] summary::after{content:"\2212"}
+details p{padding-bottom:15px;color:var(--ink2);font-size:16px;font-weight:300;margin-top:-4px}
+
+.foot{text-align:center;color:var(--muted);font-size:13.5px;font-weight:300;line-height:1.9;padding:6px 10px 0}
+.foot a{text-decoration:underline}
+.legal{margin-top:10px;font-size:12.5px;line-height:1.6}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<a class="skip" href="#form">דלג לטופס</a>
+
+<div class="shell">
+
+  <div class="panel top">
+    <div class="lg">שם הסטודיו<small>ציפורניים · ריסים · גבות</small></div>
+    <span class="chip"><i aria-hidden="true"></i> עונים עכשיו</span>
+  </div>
+
+  <div class="panel hero">
+    <h1>תור פנוי מחכה לך.<br><em>נשאר רק לבחור שעה.</em></h1>
+    <p class="lede">שולחים הודעה ומקבלים את השעות הפנויות של השבוע, עם המחיר לטיפול שבחרת. בלי לחכות לתשובה בסטורי.</p>
+    <div class="cta">
+      <a class="b b1" href="#form">לקבלת שעות פנויות</a>
+      <a class="b b2 num" href="tel:0500000000" dir="ltr">050-000-0000</a>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><b class="num" dir="ltr">2 דק׳</b><span>זמן מענה</span></div>
+    <div class="stat"><b>6 ימים</b><span>בשבוע</span></div>
+    <div class="stat"><b>ביט</b><span>ואשראי</span></div>
+  </div>
+
+  <div class="panel">
+    <h2>הטיפולים והמחירים</h2>
+    <p class="sub">המחיר לטיפול בודד. מילוי אחרי שלושה שבועות במחיר מופחת.</p>
+    <div class="menu">
+      <div class="item"><div><b>לק ג׳ל</b><span>כולל עיצוב וטיפוח עור סביב הציפורן</span></div><span class="pr num" dir="ltr">140 ₪</span></div>
+      <div class="item"><div><b>בנייה בג׳ל</b><span>אורך וצורה לפי בחירה</span></div><span class="pr num" dir="ltr">220 ₪</span></div>
+      <div class="item"><div><b>מילוי</b><span>עד שלושה שבועות מהטיפול הקודם</span></div><span class="pr num" dir="ltr">160 ₪</span></div>
+      <div class="item"><div><b>הרמת ריסים וצביעה</b><span>ללא הדבקה, מחזיק כשישה שבועות</span></div><span class="pr num" dir="ltr">190 ₪</span></div>
+      <div class="item"><div><b>עיצוב גבות ולמינציה</b><span>כולל צביעה</span></div><span class="pr num" dir="ltr">150 ₪</span></div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>איך קובעים</h2>
+    <p class="sub">שלושה צעדים, הכל בהודעות.</p>
+    <div class="rows">
+      <div class="row"><span class="ic">1</span><div><b>כותבות מה רוצות</b><span></span><p>שם, טלפון וסוג הטיפול.</p></div></div>
+      <div class="row"><span class="ic">2</span><div><b>מקבלות שעות פנויות</b><p>תוך שתי דקות, בכל שעה.</p></div></div>
+      <div class="row"><span class="ic">3</span><div><b>בוחרות ומגיעות</b><p>אישור מיידי ותזכורת יום לפני.</p></div></div>
+    </div>
+  </div>
+
+  <div class="panel" id="form">
+    <h2>נשלח לך שעות פנויות</h2>
+    <p class="sub">שם, טלפון והטיפול שמעניין אותך.</p>
+    <form onsubmit="event.preventDefault();alert('זו תבנית להמחשה. יש לחבר את הטופס למערכת לפני העלייה לאוויר.');">
+      <label for="nm">שם מלא</label>
+      <input id="nm" type="text" autocomplete="name" required>
+      <label for="tl">טלפון</label>
+      <input id="tl" type="tel" autocomplete="tel" inputmode="tel" required dir="ltr">
+      <label for="sv">איזה טיפול</label>
+      <select id="sv">
+        <option>לק ג׳ל</option>
+        <option>בנייה בג׳ל</option>
+        <option>מילוי</option>
+        <option>ריסים</option>
+        <option>גבות</option>
+        <option>עוד לא החלטתי</option>
+      </select>
+      <div class="chk">
+        <input id="mk" type="checkbox">
+        <label for="mk">אני מאשרת קבלת מבצעים ועדכונים מהסטודיו. אפשר לבטל בכל עת.</label>
+      </div>
+      <button type="submit">שלחו לי שעות פנויות</button>
+      <p class="fine">שליחת הטופס מהווה הסכמה ל<a href="#">מדיניות הפרטיות</a> ול<a href="#">תנאי השימוש</a>. הפרטים משמשים ליצירת קשר בנוגע לפנייה בלבד ואינם מועברים לגורם שלישי.</p>
+    </form>
+  </div>
+
+  <div class="panel">
+    <h2>עבודות ולקוחות</h2>
+    <p class="sub" style="margin-bottom:16px">המקום הזה שמור לתמונות ולביקורות אמיתיות.</p>
+    <div class="ph"><b>רק עבודות שבוצעו בסטודיו.</b> כאן ייכנסו תמונות של עבודות אמיתיות וביקורות גוגל. אין להשתמש בתמונות מהאינטרנט או ממאגרי תמונות ולהציג אותן כעבודות שלכן: זו הטעיה לפי חוק הגנת הצרכן וגם הפרת זכויות יוצרים. לתמונות של לקוחה נדרשת הסכמה בכתב.</div>
+  </div>
+
+  <div class="panel">
+    <h2>שאלות נפוצות</h2>
+    <div style="margin-top:10px">
+      <details open><summary>כמה זמן לוקח טיפול?</summary><p>לק ג׳ל כשעה, בנייה כשעה וחצי, ריסים כשעה. נשלח לך את משך הזמן המדויק יחד עם אישור התור.</p></details>
+      <details><summary>מה קורה אם ציפורן נשברת?</summary><p>תיקון של ציפורן בודדת תוך שבוע מהטיפול הוא ללא עלות. מעבר לשבוע יש תוספת קטנה, ונגיד לך אותה מראש.</p></details>
+      <details><summary>אפשר לבטל תור?</summary><p>כן. מקבלים תזכורת יום לפני, ואפשר להזיז או לבטל בלחיצה אחת בהודעה. ביטול עד ארבע שעות לפני התור הוא בסדר גמור.</p></details>
+      <details><summary>יש חניה?</summary><p>יש חניה כחול לבן ברחוב וחניון ציבורי במרחק דקה הליכה. נשלח לך מיקום מדויק בהודעת האישור.</p></details>
+    </div>
+  </div>
+
+  <p class="foot">
+    © שם הסטודיו · כתובת · <span class="num" dir="ltr">050-000-0000</span><br>
+    <a href="#">הצהרת נגישות</a> · <a href="#">מדיניות פרטיות</a> · <a href="#">תנאי שימוש</a>
+    <span class="legal" style="display:block">המחירים המוצגים תקפים למועד פרסום הדף וניתנים לשינוי. משך הטיפול והתוצאה משתנים מאדם לאדם.</span>
+  </p>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>תבנית 04 · מסך מפוצל · ייעוץ משכנתאות | Frontia</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --deep:#0E1A3A; --deep-2:#1B3A8F; --accent:#3D7BFF;
+  --paper:#FFFFFF; --ink:#101828; --ink2:#475467; --muted:#7A869A;
+  --line:#E3E8F0;
+  --f:'Heebo',-apple-system,'Segoe UI',Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--f);background:var(--paper);color:var(--ink);font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+.skip{position:absolute;inset-inline-start:-9999px;top:0;background:var(--ink);color:#fff;padding:12px 20px;z-index:99}
+.skip:focus{inset-inline-start:16px;top:12px}
+.num{font-variant-numeric:tabular-nums;unicode-bidi:isolate}
+.w{max-width:1080px;margin:0 auto;padding-inline:26px}
+
+.split{display:grid;grid-template-columns:1fr 1fr;min-height:100svh}
+.pane-a{
+  background:
+    radial-gradient(900px 520px at 82% 12%,rgba(61,123,255,.34),transparent 62%),
+    linear-gradient(200deg,#14224A 0%,#0E1A3A 58%,#0A1128 100%);
+  color:#fff;display:flex;flex-direction:column;justify-content:center;padding:56px clamp(26px,4vw,64px);position:relative;overflow:hidden;
+}
+.pane-a::after{content:"";position:absolute;inset-inline-start:-90px;bottom:-120px;width:340px;height:340px;border-radius:50%;border:1px solid rgba(255,255,255,.1)}
+.brandline{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:auto;padding-bottom:40px}
+.lg{font-size:20px;font-weight:800;letter-spacing:-.4px}
+.lg small{display:block;font-size:12.5px;font-weight:300;color:rgba(255,255,255,.6);letter-spacing:0}
+.tel-top{font-size:15.5px;color:rgba(255,255,255,.72)}
+.pill{display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.16);padding:7px 15px;border-radius:100px;font-size:14.5px;color:rgba(255,255,255,.9);margin-bottom:22px}
+.pill i{width:7px;height:7px;border-radius:50%;background:#5CE6A8;display:inline-block}
+h1{font-size:clamp(32px,3.6vw,50px);line-height:1.14;font-weight:800;letter-spacing:-1.2px;max-width:16ch}
+h1 em{font-style:normal;color:#8FB4FF}
+.lede{margin-top:18px;font-size:18.5px;color:rgba(255,255,255,.76);font-weight:300;max-width:46ch}
+.ticks{margin:30px 0 auto;display:grid;gap:12px;list-style:none}
+.ticks li{display:grid;grid-template-columns:24px 1fr;gap:12px;align-items:start;font-size:16.5px;color:rgba(255,255,255,.88)}
+.ticks i{width:22px;height:22px;border-radius:50%;background:rgba(255,255,255,.12);display:grid;place-items:center;margin-top:3px}
+.foot-a{padding-top:40px;font-size:13px;color:rgba(255,255,255,.42);line-height:1.6;max-width:52ch}
+
+.pane-b{display:flex;align-items:center;justify-content:center;padding:56px clamp(26px,4vw,64px);background:var(--paper)}
+.formbox{width:100%;max-width:440px}
+.formbox h2{font-size:27px;font-weight:700;letter-spacing:-.6px}
+.formbox .sub{margin-top:8px;color:var(--muted);font-size:16.5px;font-weight:300}
+label{display:block;font-size:15px;font-weight:500;margin:18px 0 6px}
+input[type=text],input[type=tel],select{width:100%;padding:13px 15px;border:1.5px solid var(--line);border-radius:12px;font-family:inherit;font-size:16.5px;background:#FAFBFF;color:var(--ink)}
+input::placeholder{color:#A3ACBD}
+input:focus,select:focus{background:#fff;border-color:var(--accent)}
+.chk{display:flex;gap:10px;align-items:flex-start;margin-top:18px;font-size:14.5px;color:var(--ink2);font-weight:300;line-height:1.55}
+.chk input{margin-top:5px;width:17px;height:17px;flex:none}
+.chk label{margin:0;font-weight:300;font-size:14.5px}
+button{width:100%;margin-top:20px;padding:15px;background:var(--deep-2);color:#fff;border:0;border-radius:12px;font-family:inherit;font-size:17px;font-weight:500;cursor:pointer}
+button:hover{background:var(--accent)}
+.or{margin-top:16px;text-align:center;font-size:15px;color:var(--muted)}
+.or a{color:var(--deep-2);font-weight:500;text-decoration:underline}
+.fine{font-size:13px;color:var(--muted);font-weight:300;margin-top:16px;line-height:1.6}
+.fine a{color:var(--deep-2);text-decoration:underline}
+
+.strip{background:#F6F8FC;border-block:1px solid var(--line);padding:22px 0}
+.strip .w{display:flex;flex-wrap:wrap;gap:32px;justify-content:center;font-size:16px;color:var(--ink2)}
+.strip b{color:var(--deep-2);font-weight:500}
+
+section{padding:60px 0}
+h2.sec{font-size:clamp(25px,3vw,33px);font-weight:700;letter-spacing:-.7px}
+.sub2{margin-top:10px;color:var(--muted);font-size:17.5px;font-weight:300;max-width:58ch}
+.cards{margin-top:32px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{border:1px solid var(--line);border-radius:16px;padding:24px;background:#fff}
+.card .n{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:9px;background:#E9F0FF;color:var(--deep-2);font-weight:700;font-size:14px;margin-bottom:12px}
+.card b{display:block;font-size:18.5px;font-weight:500;margin-bottom:5px}
+.card p{color:var(--ink2);font-size:16.5px;font-weight:300}
+.ph{margin-top:30px;border:1px dashed #C9D5EC;background:#F9FBFF;border-radius:16px;padding:22px 24px;color:var(--ink2);font-size:16px;font-weight:300}
+.ph b{color:var(--ink);font-weight:500}
+.qa{border-top:1px solid var(--line);padding:20px 0}
+.qa b{display:block;font-size:18px;font-weight:500}
+.qa p{margin-top:5px;color:var(--ink2);font-size:16.5px;font-weight:300}
+
+footer{background:#F6F8FC;border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-size:14.5px;font-weight:300}
+footer .w{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
+footer a{text-decoration:underline}
+.legal{margin-top:14px;font-size:13px;line-height:1.65;max-width:82ch}
+
+.sticky{display:none}
+@media(max-width:900px){
+  .split{grid-template-columns:1fr;min-height:0}
+  .pane-a{padding-block:44px}
+  .ticks{margin-bottom:0}
+  .foot-a{display:none}
+  .cards{grid-template-columns:1fr}
+  .sticky{display:block;position:fixed;inset-inline:0;bottom:0;background:#fff;border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom));z-index:40}
+  .sticky a{display:block;text-align:center;background:var(--deep-2);color:#fff;padding:14px;border-radius:12px;font-weight:500}
+  body{padding-bottom:76px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<a class="skip" href="#form">דלג לטופס</a>
+
+<div class="split">
+  <div class="pane-a">
+    <div class="brandline">
+      <div class="lg">שם היועץ<small>ייעוץ משכנתאות ומיחזור הלוואות</small></div>
+      <a class="tel-top num" href="tel:0500000000" dir="ltr">050-000-0000</a>
+    </div>
+
+    <span class="pill"><i aria-hidden="true"></i> שיחת בדיקה ראשונה ללא עלות</span>
+    <h1>לפני שאתם חותמים<br><em>על המשכנתא שלכם.</em></h1>
+    <p class="lede">בדיקה של התמהיל שהבנק הציע לכם, השוואה מול הצעות מבנקים אחרים, וליווי עד החתימה. גם אם כבר יש לכם משכנתא, בודקים אם מיחזור מתאים.</p>
+    <ul class="ticks">
+      <li><i aria-hidden="true"><svg width="12" height="12" viewBox="0 0 18 18" fill="none"><path d="M3.5 9.5l3.5 3.5 7.5-8" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></i><span>בדיקת ההצעה שקיבלתם מהבנק, שורה אחר שורה</span></li>
+      <li><i aria-hidden="true"><svg width="12" height="12" viewBox="0 0 18 18" fill="none"><path d="M3.5 9.5l3.5 3.5 7.5-8" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></i><span>הגשה מקבילה לכמה בנקים והשוואה בטבלה אחת</span></li>
+      <li><i aria-hidden="true"><svg width="12" height="12" viewBox="0 0 18 18" fill="none"><path d="M3.5 9.5l3.5 3.5 7.5-8" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></i><span>שכר טרחה קבוע ומוסכם מראש, בלי אחוזים מהעסקה</span></li>
+    </ul>
+    <p class="foot-a">© שם היועץ · כתובת המשרד · השירות הוא ייעוץ וליווי בתחום המשכנתאות ואינו ייעוץ השקעות או ייעוץ פנסיוני.</p>
+  </div>
+
+  <div class="pane-b" id="form">
+    <div class="formbox">
+      <h2>לשיחת בדיקה ללא עלות</h2>
+      <p class="sub">עשרים דקות, ותדעו אם יש מה לשפר.</p>
+      <form onsubmit="event.preventDefault();alert('זו תבנית להמחשה. יש לחבר את הטופס למערכת לפני העלייה לאוויר.');">
+        <label for="nm">שם מלא</label>
+        <input id="nm" type="text" autocomplete="name" required>
+        <label for="tl">טלפון</label>
+        <input id="tl" type="tel" autocomplete="tel" inputmode="tel" required dir="ltr">
+        <label for="sv">באיזה שלב אתם</label>
+        <select id="sv">
+          <option>מחפשים דירה, עוד לא קניתי</option>
+          <option>חתמתי על חוזה וצריך משכנתא</option>
+          <option>קיבלתי הצעה מהבנק ורוצה בדיקה</option>
+          <option>יש לי משכנתא ורוצה לבדוק מיחזור</option>
+          <option>איחוד הלוואות</option>
+        </select>
+        <div class="chk">
+          <input id="mk" type="checkbox">
+          <label for="mk">אני מאשרים קבלת עדכונים ומידע מקצועי. אפשר לבטל בכל עת.</label>
+        </div>
+        <button type="submit">לתיאום שיחת בדיקה</button>
+        <p class="or">או פשוט <a class="num" href="tel:0500000000" dir="ltr">050-000-0000</a></p>
+        <p class="fine">אין לשלוח בטופס זה תדפיסי בנק או מסמכים. שליחת הטופס מהווה הסכמה ל<a href="#">מדיניות הפרטיות</a> ול<a href="#">תנאי השימוש</a>. הפרטים משמשים ליצירת קשר בנוגע לפנייה בלבד ואינם מועברים לגורם שלישי.</p>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="strip">
+  <div class="w">
+    <span><b>שיחה ראשונה</b> ללא עלות</span>
+    <span><b>שכר טרחה קבוע</b> מוסכם מראש</span>
+    <span><b>הגשה למספר בנקים</b> במקביל</span>
+    <span><b>ליווי עד החתימה</b></span>
+  </div>
+</div>
+
+<main>
+<section class="w">
+  <h2 class="sec">איך מתנהל התהליך</h2>
+  <p class="sub2">שלושה שלבים. בסוף השלב הראשון כבר תדעו אם בכלל שווה לכם להמשיך.</p>
+  <div class="cards">
+    <div class="card"><span class="n">1</span><b>שיחת בדיקה</b><p>עשרים דקות. עוברים על ההכנסות, ההון העצמי וההצעה שקיבלתם, ואומרים לכם בכנות אם יש מה לשפר.</p></div>
+    <div class="card"><span class="n">2</span><b>בניית תמהיל והגשה</b><p>בונים תמהיל שמתאים ליכולת ההחזר שלכם ומגישים לכמה בנקים במקביל, כדי שההצעות יתחרו זו בזו.</p></div>
+    <div class="card"><span class="n">3</span><b>השוואה וליווי לחתימה</b><p>מקבלים טבלת השוואה של ההצעות, בוחרים יחד, ומלווים אתכם עד החתימה בבנק.</p></div>
+  </div>
+  <div class="ph"><b>מקום שמור להמלצות אמיתיות.</b> כאן ייכנסו המלצות של לקוחות בשמם ובאישורם בכתב, או צילומי ביקורות גוגל. בתחום הפיננסי חשוב במיוחד לא לפרסם סכומי חיסכון או אחוזי ריבית כהבטחה. אפשר להציג מקרה אמיתי רק עם אישור הלקוח, עם ציון שהתוצאה תלויה בנתוני הלווה ובתנאי השוק במועד ההגשה.</div>
+</section>
+
+<section class="w" style="padding-top:0">
+  <h2 class="sec">שאלות נפוצות</h2>
+  <div class="qa"><b>כמה עולה השירות?</b><p>שכר הטרחה הוא סכום קבוע שמסוכם ונחתם מראש, לפני שמתחילים. אנחנו לא גובים אחוז מגובה המשכנתא ולא מקבלים עמלה מהבנקים.</p></div>
+  <div class="qa"><b>אתם מבטיחים ריבית נמוכה יותר?</b><p>לא. אף אחד לא יכול להבטיח את זה. הריבית נקבעת על ידי הבנק לפי הנתונים שלכם ולפי מצב השוק. מה שאנחנו כן עושים הוא לגרום לכמה בנקים להתחרות על התיק שלכם ולבחור את התמהיל שמתאים ליכולת ההחזר.</p></div>
+  <div class="qa"><b>כמה זמן לוקח התהליך?</b><p>מהשיחה הראשונה ועד אישור עקרוני בדרך כלל מספר ימי עסקים, תלוי בזמינות המסמכים ובבנקים. לוח זמנים מדויק יימסר לכם בשיחה.</p></div>
+  <div class="qa"><b>יש לי כבר משכנתא, שווה לבדוק מיחזור?</b><p>לפעמים כן ולפעמים לא. יש מקרים שבהם עמלת הפירעון המוקדם מבטלת את התועלת. בשיחה הראשונה נבדוק את זה ונגיד לכם בכנות גם אם התשובה היא שלא כדאי.</p></div>
+</section>
+</main>
+
+<footer>
+  <div class="w">
+    <div>© שם היועץ · כתובת המשרד · <span class="num" dir="ltr">050-000-0000</span></div>
+    <div><a href="#">הצהרת נגישות</a> · <a href="#">מדיניות פרטיות</a> · <a href="#">תנאי שימוש</a></div>
+  </div>
+  <div class="w"><p class="legal">האמור בדף זה הוא מידע כללי בלבד ואינו מהווה ייעוץ, המלצה או חוות דעת ביחס לכדאיות עסקה או הלוואה. אין באמור התחייבות לתנאי ריבית או לאישור מימון כלשהו. תנאי ההלוואה נקבעים על ידי הגוף המממן בלבד ובכפוף לאישורו. אי עמידה בפירעון ההלוואה עלולה לגרור חיוב בריבית פיגורים והליכי הוצאה לפועל.</p></div>
+</footer>
+
+<div class="sticky"><a href="#form">לשיחת בדיקה ללא עלות</a></div>
+</body>
+</html>
