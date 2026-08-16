@@ -1,0 +1,44 @@
+name: bootstrap-files
+on: workflow_dispatch
+permissions:
+  contents: write
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download site files from live deploy
+        run: |
+          BASE="https://6a7d84577d502c0b89fdcd5e--frontia-il.netlify.app"
+          for f in index.html about.html services.html contact.html accessibility.html privacy.html terms.html style.css sitemap.xml robots.txt logo.svg logo-dark.svg logo-email.png favicon-32.png apple-touch-icon.png share.png founder.jpg; do
+            curl -fsSL "$BASE/$f" -o "$f"
+          done
+      - name: Verify integrity
+        run: |
+          cat > /tmp/sums.txt <<EOF
+          80f8435f7a396214fe954d823c4c5d1f70c7e5a1  index.html
+          ca2e3d5bcd47bda4141044f973e4426698813759  about.html
+          3199bd74c7ade1668a61c99595dafa7fb00e1751  services.html
+          876a7167edcdfb7e0b959ca879fc8d2ba6cd068f  contact.html
+          49a1ec5e3499a814ab1d1bc38cd26e1c180dbed9  accessibility.html
+          6801330b224368807ce7781638dc7e9f2d9564c5  privacy.html
+          61461cecbb4d2f9ab0868abe787f9f89d7016d81  terms.html
+          bc0ec232c9560e49afc7425f04c906e06163b0b7  style.css
+          ccc4160b072d5bcf1b97fc927d8b41a9a7bd47c1  sitemap.xml
+          70dfc070f53115c0dbb29493e8bbbf616bb6aa98  robots.txt
+          7f1c8da657a144bd35a472a86eeabf17488ff534  logo.svg
+          0315f54c93a2fc752a597539f42a54013c2f887b  logo-dark.svg
+          8c5968acb46d385c60871ef6d5fd87cdbf44277f  logo-email.png
+          856baa315967272c68b848e17a6760ff99a46d02  favicon-32.png
+          41b79959192376d4ebdad099a53332c3db220f00  apple-touch-icon.png
+          b48f4cf923888d9270387627255316f11bcccf15  share.png
+          0a159191d69031298e543c5747a2cc9c33ccf87c  founder.jpg
+          EOF
+          sha1sum -c /tmp/sums.txt
+      - name: Commit and push
+        run: |
+          git config user.name "bootstrap"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git commit -m "Add site files from live deploy"
+          git push
