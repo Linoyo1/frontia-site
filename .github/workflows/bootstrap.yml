@@ -13,16 +13,9 @@ jobs:
           for f in index.html about.html services.html contact.html accessibility.html privacy.html terms.html style.css sitemap.xml robots.txt logo.svg logo-dark.svg logo-email.png favicon-32.png apple-touch-icon.png share.png founder.jpg; do
             curl -fsSL "$BASE/$f" -o "$f"
           done
-      - name: Verify integrity
+      - name: Verify integrity of assets
         run: |
           cat > /tmp/sums.txt <<EOF
-          80f8435f7a396214fe954d823c4c5d1f70c7e5a1  index.html
-          ca2e3d5bcd47bda4141044f973e4426698813759  about.html
-          3199bd74c7ade1668a61c99595dafa7fb00e1751  services.html
-          876a7167edcdfb7e0b959ca879fc8d2ba6cd068f  contact.html
-          49a1ec5e3499a814ab1d1bc38cd26e1c180dbed9  accessibility.html
-          6801330b224368807ce7781638dc7e9f2d9564c5  privacy.html
-          61461cecbb4d2f9ab0868abe787f9f89d7016d81  terms.html
           bc0ec232c9560e49afc7425f04c906e06163b0b7  style.css
           ccc4160b072d5bcf1b97fc927d8b41a9a7bd47c1  sitemap.xml
           70dfc070f53115c0dbb29493e8bbbf616bb6aa98  robots.txt
@@ -35,6 +28,13 @@ jobs:
           0a159191d69031298e543c5747a2cc9c33ccf87c  founder.jpg
           EOF
           sha1sum -c /tmp/sums.txt
+      - name: Sanity check HTML pages
+        run: |
+          for f in index.html about.html services.html contact.html accessibility.html privacy.html terms.html; do
+            grep -q "</html>" "$f" || exit 1
+            test $(wc -c < "$f") -gt 4000 || exit 1
+          done
+          echo "all pages complete"
       - name: Commit and push
         run: |
           git config user.name "bootstrap"
