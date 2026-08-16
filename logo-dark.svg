@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 64" width="260" height="64" role="img" aria-label="Frontia">
+  <defs>
+    <linearGradient id="fgd" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2DE3B0"/>
+      <stop offset="1" stop-color="#7C93FF"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(4,8)">
+    <rect x="2" y="2" width="44" height="34" rx="11" fill="none" stroke="url(#fgd)" stroke-width="3.2"/>
+    <path d="M14 36 L14 45 L24 36 Z" fill="url(#fgd)"/>
+    <circle cx="16" cy="19" r="3.1" fill="url(#fgd)"/>
+    <circle cx="24" cy="19" r="3.1" fill="url(#fgd)" opacity="0.72"/>
+    <circle cx="32" cy="19" r="3.1" fill="url(#fgd)" opacity="0.44"/>
+  </g>
+  <text x="72" y="42"
+        font-family="Heebo, Assistant, 'Segoe UI', Arial, sans-serif"
+        font-size="30" font-weight="700" letter-spacing="-0.4" fill="#EAF0FF">Front<tspan fill="#2DE3B0">ia</tspan></text>
+</svg>
